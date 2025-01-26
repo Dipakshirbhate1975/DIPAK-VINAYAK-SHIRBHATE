@@ -1,0 +1,143 @@
+#VRML V2.0 utf8
+WorldInfo {
+ title "Kaleidoscope"
+ info ["This Web3D Content was created with Vivaty Studio, a Web3D authoring tool"
+ "www.mediamachines.com"
+ "An Interactive 3-D Kaleidoscope"
+ "Copyright (c) 1997 Anu Garg (garg -at- wordsmith.org)"
+ "http://www.wordsmith.org/anu/"]
+}
+## Vizthumbnail  Thumb_DVS_KALEIDEOSCOPE_wrl2884991649650258.jpg
+DEF Import_kaleidoscope_wrl Group {
+ children [
+  NavigationInfo {
+   avatarSize [
+    .25 1.6 .75
+   ]
+   visibilityLimit 0
+   speed 1
+   headlight TRUE
+   type "EXAMINE"
+  }
+  PointLight {
+   ambientIntensity 0.000
+   intensity 1.000
+   radius 100.000
+   attenuation 1 0 0
+   color 1 1 1
+   on TRUE
+  }
+  DEF NewTrinkets Group {
+   children [
+    DEF Trinkets Transform {
+     children [
+      DEF TrinketsGroup Group {
+       children [
+        Transform {
+         translation 1.5 -.1 -1
+         rotation .577 .577 .577 .612
+         children [
+          Shape {
+           appearance Appearance {
+            material DEF material0 Material {
+             ambientIntensity 0.200
+             shininess 0.200
+             diffuseColor .3 .6 .7
+            }
+           }
+           geometry Box {
+            size 1 1 1
+           }
+          }
+         ]
+        }
+        Transform {
+         translation 3.5 .1 .5
+         children [
+          Shape {
+           appearance Appearance {
+            material DEF material1 Material {
+             ambientIntensity 0.200
+             shininess 0.200
+             diffuseColor .8 .1 .2
+            }
+           }
+           geometry Sphere {
+            radius 0.500
+           }
+          }
+         ]
+        }
+        Transform {
+         translation 2.5 2 .3
+         rotation .707 0 .707 .612
+         children [
+          Shape {
+           appearance Appearance {
+            material DEF material2 Material {
+             ambientIntensity 0.200
+             shininess 0.200
+             diffuseColor .1 .1 .9
+            }
+           }
+           geometry Cone {
+            height 1.000
+            bottomRadius 0.500
+           }
+          }
+         ]
+        }
+        Transform {
+         translation 4.1 1.5 -.5
+         rotation 0 .707 .707 .527
+         children [
+          Shape {
+           appearance Appearance {
+            material DEF material3 Material {
+             ambientIntensity 0.200
+             shininess 0.200
+             diffuseColor .6 .3 .5
+            }
+           }
+           geometry Cylinder {
+            height 1.000
+            radius 0.500
+           }
+          }
+         ]
+        }
+        DEF pSensor PlaneSensor {
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+  DEF Trinkets2 Transform {
+   rotation 0 0 1 1.256
+   children [
+    USE NewTrinkets
+    Transform {
+     rotation 0 0 1 1.256
+     children [
+      USE NewTrinkets
+      Transform {
+       rotation 0 0 1 1.256
+       children [
+        USE NewTrinkets
+        Transform {
+         rotation 0 0 1 1.256
+         children [
+          USE NewTrinkets
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
+ROUTE pSensor.translation_changed TO Trinkets.set_translation
